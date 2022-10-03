@@ -7,14 +7,12 @@ Header Only Math Library - welp. I don't think that I have to explain much here.
 
 ## :package: Getting Started
 This library is made only with header files so there is not much u have to do just:
-- - - -
-If you are using GIT
+### If you are using GIT
 - - - -
 1. Clone this repository and save it on your device.
 2. Copy and paste HML folder with headers into your project
 3. Include HeaderMath.hpp and you are done
-- - - -
-If you are not using GIT
+### If you are not using GIT
 - - - -
 1. Download all files from this repository and save it on your device.
 2. Copy and paste HML folder with headers into your project
