@@ -18,3 +18,6 @@ int main()
     std::cout << z.x << std::endl << z.y;
 }
 ```
+
+## License
+[MIT](https://choosealicense.com/licenses/mit/)
