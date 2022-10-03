@@ -3,7 +3,7 @@ Header Only Math Library - welp. I don't think that I have to explain much here.
 ## :package: Instalation
 It's not really hard everything you need to do is just drag and drop it to your project files.
 Then you can include it and it's ready to go.
-## Usage
+## :gear: Usage
 ```cpp
 #include <iostream>
 #include "include/HeaderMath.hpp"
