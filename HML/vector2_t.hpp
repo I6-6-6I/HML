@@ -4,13 +4,12 @@ HEADER_MATH_NAMESPACE
 	template<typename T>
 	struct vector<2, T>
 	{
+#ifdef HMATH_USE_ONLY_XYZW
 		T x;
 		T y;
-#ifndef HMATH_USE_ONLY_XYZW
-		T& r = x;
-		T& g = y;
-		T& s = x;
-		T& t = y;
+#else
+		union { T x, r, s; };
+		union { T y, g, t; };
 #endif
 		//Construtors-----------------------------------------------------------------------------------
 #pragma region CONSTRUCTORS
@@ -27,7 +26,6 @@ HEADER_MATH_NAMESPACE
 		//Static Funcs----------------------------------------------------------------------------------
 #pragma region STATIC_FUNCS
 		static inline size_t constexpr length() { return 2; }
-		static inline size_t constexpr size() { return sizeof(T) * 2; }
 #pragma endregion
 
 		//Logic Operators-------------------------------------------------------------------------------

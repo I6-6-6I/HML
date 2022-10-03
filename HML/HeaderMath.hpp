@@ -9,4 +9,5 @@
 #pragma endregion
 
 #pragma region MATRIX
+#include "matrix2x2_t.hpp"
 #pragma endregion

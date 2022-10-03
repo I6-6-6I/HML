@@ -4,20 +4,18 @@ HEADER_MATH_NAMESPACE
 	template<typename T>
 	struct vector<4, T>
 	{
+#ifdef HMATH_USE_ONLY_XYZW
 		T x;
 		T y;
 		T z;
 		T w;
-#ifndef HMATH_USE_ONLY_XYZW
-		T& r = x;
-		T& g = y;
-		T& b = z;
-		T& a = w;
-		T& s = x;
-		T& t = y;
-		T& p = z;
-		T& q = w;
+#else
+		union { T x, r, s };
+		union { T y, g, t };
+		union { T z, b, p };
+		union { T w, a, q };
 #endif
+
 		//Construtors-----------------------------------------------------------------------------------
 #pragma region CONSTRUCTORS
 		vector() : x(0), y(0), z(0), w(0) {  }
@@ -34,7 +32,6 @@ HEADER_MATH_NAMESPACE
 		//Static Funcs----------------------------------------------------------------------------------
 #pragma region STATIC_FUNCS
 		static inline size_t constexpr length() { return 4; }
-		static inline size_t constexpr size() { return sizeof(T) * 4; }
 		static inline vector<2, T> constexpr xy() { return vector<2, T>(this->x, this->y); }
 		static inline vector<3, T> constexpr xyz() { return vector<3, T>(this->x, this->y, this->z); }
 #pragma endregion
