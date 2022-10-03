@@ -1,9 +1,26 @@
 # HML
 Header Only Math Library - welp. I don't think that I have to explain much here.
-## :package: Instalation
-It's not really hard everything you need to do is just drag and drop it to your project files.
-Then you can include it and it's ready to go.
-## Usage
+## :spiral_notepad: Features
+ - Vectors
+ - Matrices
+ - Matrix Transformations
+
+## :package: Getting Started
+This library is made only with header files so there is not much u have to do just:
+
+`If you are using GIT`
+1. Clone this repository and save it on your device.
+2. Copy and paste HML folder with headers into your project
+3. Include HeaderMath.hpp and you are done
+
+`If you are not using GIT`
+1. Download all files from this repository and save it on your device.
+2. Copy and paste HML folder with headers into your project
+3. Include HeaderMath.hpp and you are done
+
+It's that simple.
+
+## :gear: Usage
 ```cpp
 #include <iostream>
 #include "include/HeaderMath.hpp"
