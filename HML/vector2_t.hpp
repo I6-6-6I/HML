@@ -11,6 +11,28 @@ HEADER_MATH_NAMESPACE
 		union { T x, r, s; };
 		union { T y, g, t; };
 #endif
+		//Access Operators------------------------------------------------------------------------------
+#pragma region ACCESS_OPERATORS
+		T& operator[](size_t i)
+		{
+			switch (i)
+			{
+				case 0:		return this->x;
+				case 1:		return this->y;
+				default:	return this->x;
+			}
+		}
+		T constexpr const& operator[](size_t i) const
+		{
+			switch (i)
+			{
+				case 0:		return this->x;
+				case 1:		return this->y;
+				default:	return this->x;
+			}
+		}
+#pragma endregion
+
 		//Construtors-----------------------------------------------------------------------------------
 #pragma region CONSTRUCTORS
 		vector() : x(0), y(0) {  }

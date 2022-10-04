@@ -9,10 +9,34 @@ HEADER_MATH_NAMESPACE
 		T y;
 		T z;
 #else
-		union { T x, r, s };
-		union { T y, g, t };
-		union { T z, b, p };
+		union { T x, r, s; };
+		union { T y, g, t; };
+		union { T z, b, p; };
 #endif
+		//Access Operators------------------------------------------------------------------------------
+#pragma region ACCESS_OPERATORS
+		T& operator[](size_t i)
+		{
+			switch (i)
+			{
+				case 0:		return this->x;
+				case 1:		return this->y;
+				case 2:		return this->z;
+				default:	return this->x;
+			}
+		}
+		T constexpr const& operator[](size_t i) const
+		{
+			switch (i)
+			{
+				case 0:		return this->x;
+				case 1:		return this->y;
+				case 2:		return this->z;
+				default:	return this->x;
+			}
+		}
+#pragma endregion
+
 		//Construtors-----------------------------------------------------------------------------------
 #pragma region CONSTRUCTORS
 		vector() : x(0), y(0), z(0) {  }
@@ -28,7 +52,7 @@ HEADER_MATH_NAMESPACE
 		//Static Funcs----------------------------------------------------------------------------------
 #pragma region STATIC_FUNCS
 		static inline size_t constexpr length() { return 3; }
-		static inline vector<2, T> constexpr xy() { return vector<2, T>(this->x, this->y); }
+		inline vector<2, T> constexpr xy() { return vector<2, T>(this->x, this->y); }
 #pragma endregion
 
 		//Logic Operators-------------------------------------------------------------------------------

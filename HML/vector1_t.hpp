@@ -9,6 +9,18 @@ HEADER_MATH_NAMESPACE
 #else
 		union { T x, r, s; };
 #endif
+		//Access Operators------------------------------------------------------------------------------
+#pragma region ACCESS_OPERATORS
+	T& operator[](size_t i)
+	{
+		return this->x;
+	}
+	T constexpr const& operator[](size_t i) const
+	{
+		return this->x;
+	}
+#pragma endregion
+
 		//Construtors-----------------------------------------------------------------------------------
 #pragma region CONSTRUCTORS
 		vector() : x(0) {  }

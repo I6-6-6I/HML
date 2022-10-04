@@ -24,8 +24,13 @@ HEADER_MATH_NAMESPACE
 	template <typename T> using quat_t			= quat<T>;
 	#pragma endregion
 
+	//Declares----------------------------------------------------------------------------------------------------------------------
+	#pragma region DECLARES
 	DECLARE_VECTOR1
 	DECLARE_VECTOR2
 	DECLARE_VECTOR3
 	DECLARE_VECTOR4
+
+	DECLARE_MAT2
+	#pragma endregion
 }
