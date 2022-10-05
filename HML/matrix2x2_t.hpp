@@ -61,13 +61,51 @@ HEADER_MATH_NAMESPACE
 		this->values[1].x = mat[1][0];
 		this->values[1].y = mat[1][1];
 	}
-	//explicit constexpr matrix(matrix<2, 4, T> const& mat);
-	//explicit constexpr matrix(matrix<3, 2, T> const& mat);
-	//explicit constexpr matrix(matrix<3, 3, T> const& mat);
-	//explicit constexpr matrix(matrix<3, 4, T> const& mat);
-	//explicit constexpr matrix(matrix<4, 2, T> const& mat);
-	//explicit constexpr matrix(matrix<4, 3, T> const& mat);
-	//explicit constexpr matrix(matrix<4, 4, T> const& mat);
+	explicit constexpr matrix(matrix<2, 4, T> const& mat)
+	{
+		this->values[0].x = mat[0][0];
+		this->values[0].y = mat[0][1];
+		this->values[1].x = mat[1][0];
+		this->values[1].y = mat[1][1];
+	}
+	explicit constexpr matrix(matrix<3, 2, T> const& mat)
+	{ 
+		this->values[0] = mat[0];
+		this->values[1] = mat[1];
+	}
+	explicit constexpr matrix(matrix<3, 3, T> const& mat)
+	{ 
+		this->values[0].x = mat[0][0];
+		this->values[0].y = mat[0][1];
+		this->values[1].x = mat[1][0];
+		this->values[1].y = mat[1][1];
+	}
+	explicit constexpr matrix(matrix<3, 4, T> const& mat)
+	{
+		this->values[0].x = mat[0][0];
+		this->values[0].y = mat[0][1];
+		this->values[1].x = mat[1][0];
+		this->values[1].y = mat[1][1];
+	}
+	explicit constexpr matrix(matrix<4, 2, T> const& mat)
+	{
+		this->values[0] = mat[0];
+		this->values[1] = mat[1];
+	}
+	explicit constexpr matrix(matrix<4, 3, T> const& mat)
+	{ 
+		this->values[0].x = mat[0][0];
+		this->values[0].y = mat[0][1];
+		this->values[1].x = mat[1][0];
+		this->values[1].y = mat[1][1];
+	}
+	explicit constexpr matrix(matrix<4, 4, T> const& mat)
+	{ 
+		this->values[0].x = mat[0][0];
+		this->values[0].y = mat[0][1];
+		this->values[1].x = mat[1][0];
+		this->values[1].y = mat[1][1];
+	}
 #pragma endregion
 
 	//Arithmetic Operators--------------------------------------------------------------------------
@@ -161,8 +199,77 @@ HEADER_MATH_NAMESPACE
 		}
 #pragma endregion
 	};
+	//Unary Arithmetic Operators--------------------------------------------------------------------
+#pragma region UNARY_ARITHMETIC_OPERATORS
+	template<typename T>
+	matrix<2, 2, T> operator+(matrix<2, 2, T> const& m)
+	{
+		return m;
+	}
+
+	template<typename T>
+	matrix<2, 2, T> operator-(matrix<2, 2, T> const& m)
+	{
+		return matrix<2, 2, T>(
+			-m[0],
+			-m[1]);
+	}
+#pragma endregion
+
 	//Binary Arithmetic Operators-------------------------------------------------------------------
-#pragma region UNARY_ARITHMETHIC_OPERATORS
+#pragma region BINARY_ARITHMETHIC_OPERATORS
+	template<typename T>
+	matrix<2, 2, T> operator+(matrix<2, 2, T> const& m, T scalar)
+	{
+		return matrix<2, 2, T>(m[0] + scalar, m[1] + scalar);
+	}
+
+	template<typename T>
+	matrix<2, 2, T> operator+(matrix<2, 2, T> const& m1, matrix<2, 2, T> const& m2)
+	{
+		return matrix<2, 2, T>(m1[0] + m2[0], m1[1] + m2[1]);
+	}
+
+	template<typename T>
+	matrix<2, 2, T> operator-(matrix<2, 2, T> const& m, T scalar)
+	{
+		return matrix<2, 2, T>(m[0] - scalar, m[1] - scalar);
+	}
+
+	template<typename T>
+	matrix<2, 2, T> operator-(matrix<2, 2, T> const& m1, matrix<2, 2, T> const& m2)
+	{
+		return matrix<2, 3, T>(m1[0] - m2[0], m1[1] - m2[1]);
+	}
+
+	template<typename T>
+	matrix<2, 2, T> operator*(matrix<2, 2, T> const& m, T scalar)
+	{
+		return matrix<2, 2, T>(m[0] * scalar, m[1] * scalar);
+	}
+
+	template<typename T>
+	matrix<2, 2, T> operator*(T scalar, matrix<2, 2, T> const& m)
+	{
+		return matrix<2, 2, T>(m[0] * scalar, m[1] * scalar);
+	}
+
+	template<typename T>
+	vector<2, T> operator*(matrix<2, 2, T> const& m, vector<2, T> const& v)
+	{
+		return vector<2, T>(
+			m[0][0] * v.x + m[1][0] * v.y,
+			m[0][1] * v.x + m[1][1] * v.y);
+	}
+
+	template<typename T>
+	vector<2, T> operator*(vector<2, T> const& v, matrix<2, 2, T> const& m)
+	{
+		return vector<2, T>(
+			v.x * m[0][0] + v.y * m[0][1],
+			v.x * m[1][0] + v.y * m[1][1]);
+	}
+
 	template<typename T>
 	matrix<2, 2, T> operator*(matrix<2, 2, T> const& m1, matrix<2, 2, T> const& m2)
 	{
@@ -172,7 +279,8 @@ HEADER_MATH_NAMESPACE
 			m1[0][0] * m2[1][0] + m1[1][0] * m2[1][1],
 			m1[0][1] * m2[1][0] + m1[1][1] * m2[1][1]);
 	}
-		template<typename T>
+
+	template<typename T>
 	matrix<3, 2, T> operator*(matrix<2, 2, T> const& m1, matrix<3, 2, T> const& m2)
 	{
 		return matrix<3, 2, T>(
@@ -215,13 +323,13 @@ HEADER_MATH_NAMESPACE
 	}
 
 	template<typename T>
-	typename matrix<2, 2, T>::col_type operator/(matrix<2, 2, T> const& m, typename matrix<2, 2, T>::row_type const& v)
+	vector<2,T> operator/(matrix<2, 2, T> const& m, vector<2, T> const& v)
 	{
 		return inverse(m) * v;
 	}
 
 	template<typename T>
-	typename matrix<2, 2, T>::row_type operator/(typename matrix<2, 2, T>::col_type const& v, matrix<2, 2, T> const& m)
+	vector<2,T> operator/(vector<2, T> const& v, matrix<2, 2, T> const& m)
 	{
 		return v *  inverse(m);
 	}
