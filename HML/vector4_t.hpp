@@ -224,90 +224,6 @@ HEADER_MATH_NAMESPACE
 			return vector<4, T>(this->x + vec.x, this->y + vec.x, this->z + vec.x, this->w + vec.x);
 		}
 
-		template<typename T>
-		constexpr vector<4, T> operator+(vector<4, T> const& vec)
-		{
-			return vector<4, T>(this->x + vec.x, this->y + vec.y, this->z + vec.z, this->w + vec.w);
-		}
-
-		template<typename U>
-		constexpr vector<4, T> operator+(U scalar)
-		{
-			return vector<4, T>(this->x + scalar, this->y + scalar, this->z + scalar, this->w + scalar);
-		}
-
-		template<typename T>
-		constexpr vector<4, T> operator-(vector<1, T> const& vec)
-		{
-			return vector<4, T>(this->x - vec.x, this->y - vec.x, this->z - vec.x, this->w - vec.x);
-		}
-
-		template<typename T>
-		constexpr vector<4, T> operator-(vector<4, T> const& vec)
-		{
-			return vector<4, T>(this->x - vec.x, this->y - vec.y, this->z - vec.z, this->w - vec.w);
-		}
-
-		template<typename U>
-		constexpr vector<4, T> operator-(U scalar)
-		{
-			return vector<4, T>(this->x - scalar, this->y - scalar, this->z - scalar, this->w - scalar);
-		}
-
-		template<typename T>
-		constexpr vector<4, T> operator*(vector<1, T> const& vec)
-		{
-			return vector<4, T>(this->x * vec.x, this->y * vec.x, this->z * vec.x, this->w * vec.x);
-		}
-
-		template<typename T>
-		constexpr vector<4, T> operator*(vector<4, T> const& vec)
-		{
-			return vector<4, T>(this->x * vec.x, this->y * vec.y, this->z * vec.z, this->w * vec.w);
-		}
-
-		template<typename U>
-		constexpr vector<4, T> operator*(U scalar)
-		{
-			return vector<4, T>(this->x * scalar, this->y * scalar, this->z * scalar, this->w * scalar);
-		}
-
-		template<typename T>
-		constexpr vector<4, T> operator/(vector<1, T> const& vec)
-		{
-			return vector<4, T>(this->x / vec.x, this->y / vec.x, this->z / vec.x, this->w / vec.x);
-		}
-
-		template<typename T>
-		constexpr vector<4, T> operator/(vector<4, T> const& vec)
-		{
-			return vector<4, T>(this->x / vec.x, this->y / vec.y, this->z / vec.z, this->w / vec.w);
-		}
-
-		template<typename U>
-		constexpr vector<4, T> operator/(U scalar)
-		{
-			return vector<4, T>(this->x / scalar, this->y / scalar, this->z / scalar, this->w / scalar);
-		}
-
-		template<typename T>
-		constexpr vector<4, T> operator%(vector<1, T> const& vec)
-		{
-			return vector<4, T>(this->x % vec.x, this->y % vec.x, this->z % vec.x, this->w % vec.x);
-		}
-
-		template<typename T>
-		constexpr vector<4, T> operator%(vector<4, T> const& vec)
-		{
-			return vector<4, T>(this->x % vec.x, this->y % vec.y, this->z % vec.z, this->w % vec.w);
-		}
-
-		template<typename U>
-		constexpr vector<4, T> operator%(U scalar)
-		{
-			return vector<4, T>(this->x % scalar, this->y % scalar, this->z % scalar, this->w % scalar);
-		}
-
 #pragma endregion
 
 		//Increment and Decrement Operators-------------------------------------------------------------
@@ -342,4 +258,142 @@ HEADER_MATH_NAMESPACE
 		}
 #pragma endregion
 	};
+	//Unary Arithmetic Opeartors------------------------------------------------------------------------
+#pragma region UNARY_ARITHMETIC_OPERATORS
+	template<typename T>
+	constexpr vector<4, T> operator+(vector<4, T> const& v)
+	{
+		return v;
+	}
+
+	template<typename T>
+	constexpr vector<4, T> operator-(vector<4, T> const& v)
+	{
+		return vector<4, T>(0) -= v;
+	}
+#pragma endregion
+
+	//Binary Arithmetic Opeartors-----------------------------------------------------------------------
+#pragma region BINARY_ARITHMETIC_OPERATORS
+	template<typename T>
+	constexpr vector<4, T> operator+(vector<4, T> const& v, T const& scalar)
+	{
+		return vector<4, T>(v) += scalar;
+	}
+
+	template<typename T>
+	constexpr vector<4, T> operator+(vector<4, T> const& v1, vector<1, T> const& v2)
+	{
+		return vector<4, T>(v1) += v2;
+	}
+
+	template<typename T>
+	constexpr vector<4, T> operator+(T scalar, vector<4, T> const& v)
+	{
+		return vector<4, T>(v) += scalar;
+	}
+
+	template<typename T>
+	constexpr vector<4, T> operator+(vector<1, T> const& v1, vector<4, T> const& v2)
+	{
+		return vector<4, T>(v2) += v1;
+	}
+
+	template<typename T>
+	constexpr vector<4, T> operator+(vector<4, T> const& v1, vector<4, T> const& v2)
+	{
+		return vector<4, T>(v1) += v2;
+	}
+
+	template<typename T>
+	constexpr vector<4, T> operator-(vector<4, T> const& v, T const& scalar)
+	{
+		return vector<4, T>(v) -= scalar;
+	}
+
+	template<typename T>
+	constexpr vector<4, T> operator-(vector<4, T> const& v1, vector<1, T> const& v2)
+	{
+		return vector<4, T>(v1) -= v2;
+	}
+
+	template<typename T>
+	constexpr vector<4, T> operator-(T scalar, vector<4, T> const& v)
+	{
+		return vector<4, T>(scalar) -= v;
+	}
+
+	template<typename T>
+	constexpr vector<4, T> operator-(vector<1, T> const& v1, vector<4, T> const& v2)
+	{
+		return vector<4, T>(v1.x) -= v2;
+	}
+
+	template<typename T>
+	constexpr vector<4, T> operator-(vector<4, T> const& v1, vector<4, T> const& v2)
+	{
+		return vector<4, T>(v1) -= v2;
+	}
+
+	template<typename T>
+	constexpr vector<4, T> operator*(vector<4, T> const& v, T const& scalar)
+	{
+		return vector<4, T>(v) *= scalar;
+	}
+
+	template<typename T>
+	constexpr vector<4, T> operator*(vector<4, T> const& v1, vector<1, T> const& v2)
+	{
+		return vector<4, T>(v1) *= v2;
+	}
+
+	template<typename T>
+	constexpr vector<4, T> operator*(T scalar, vector<4, T> const& v)
+	{
+		return vector<4, T>(v) *= scalar;
+	}
+
+	template<typename T>
+	constexpr vector<4, T> operator*(vector<1, T> const& v1, vector<4, T> const& v2)
+	{
+		return vector<4, T>(v2) *= v1;
+	}
+
+	template<typename T>
+	constexpr vector<4, T> operator*(vector<4, T> const& v1, vector<4, T> const& v2)
+	{
+		return vector<4, T>(v1) *= v2;
+	}
+
+	template<typename T>
+	constexpr vector<4, T> operator/(vector<4, T> const& v, T const& scalar)
+	{
+		return vector<4, T>(v) /= scalar;
+	}
+
+	template<typename T>
+	constexpr vector<4, T> operator/(vector<4, T> const& v1, vector<1, T> const& v2)
+	{
+		return vector<4, T>(v1) /= v2;
+	}
+
+	template<typename T>
+	constexpr vector<4, T> operator/(T scalar, vector<4, T> const& v)
+	{
+		return vector<4, T>(scalar) /= v;
+	}
+
+	template<typename T>
+	constexpr vector<4, T> operator/(vector<1, T> const& v1, vector<4, T> const& v2)
+	{
+		return vector<4, T>(v1.x) /= v2;
+	}
+
+	template<typename T>
+	constexpr vector<4, T> operator/(vector<4, T> const& v1, vector<4, T> const& v2)
+	{
+		return vector<4, T>(v1) /= v2;
+	}
+
+#pragma endregion
 }

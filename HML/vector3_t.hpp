@@ -198,98 +198,7 @@ HEADER_MATH_NAMESPACE
 			return *this;
 		}
 
-		template<typename T>
-		constexpr vector<3, T> operator+(vector<1, T> const& vec)
-		{
-			return vector<3, T>(this->x + vec.x, this->y + vec.x, this->z + vec.x);
-		}
-
-		template<typename T>
-		constexpr vector<3, T> operator+(vector<3, T> const& vec)
-		{
-			return vector<3, T>(this->x + vec.x, this->y + vec.y, this->z + vec.z);
-		}
-
-		template<typename U>
-		constexpr vector<3, T> operator+(U scalar)
-		{
-			return vector<3, T>(this->x + scalar, this->y + scalar, this->z + scalar);
-		}
-
-		template<typename T>
-		constexpr vector<3, T> operator-(vector<1, T> const& vec)
-		{
-			return vector<3, T>(this->x - vec.x, this->y - vec.x, this->z - vec.x);
-		}
-
-		template<typename T>
-		constexpr vector<3, T> operator-(vector<3, T> const& vec)
-		{
-			return vector<3, T>(this->x - vec.x, this->y - vec.y, this->z - vec.z);
-		}
-
-		template<typename U>
-		constexpr vector<3, T> operator-(U scalar)
-		{
-			return vector<3, T>(this->x - scalar, this->y - scalar, this->z - scalar);
-		}
-
-		template<typename T>
-		constexpr vector<3, T> operator*(vector<1, T> const& vec)
-		{
-			return vector<3, T>(this->x * vec.x, this->y * vec.x, this->z * vec.x);
-		}
-
-		template<typename T>
-		constexpr vector<3, T> operator*(vector<3, T> const& vec)
-		{
-			return vector<3, T>(this->x * vec.x, this->y * vec.y, this->z * vec.z);
-		}
-
-		template<typename U>
-		constexpr vector<3, T> operator*(U scalar)
-		{
-			return vector<3, T>(this->x * scalar, this->y * scalar, this->z * scalar);
-		}
-
-		template<typename T>
-		constexpr vector<3, T> operator/(vector<1, T> const& vec)
-		{
-			return vector<3, T>(this->x / vec.x, this->y / vec.x, this->z / vec.x);
-		}
-
-		template<typename T>
-		constexpr vector<3, T> operator/(vector<3, T> const& vec)
-		{
-			return vector<3, T>(this->x / vec.x, this->y / vec.y, this->z / vec.z);
-		}
-
-		template<typename U>
-		constexpr vector<3, T> operator/(U scalar)
-		{
-			return vector<3, T>(this->x / scalar, this->y / scalar, this->z / scalar);
-		}
-
-		template<typename T>
-		constexpr vector<3, T> operator%(vector<1, T> const& vec)
-		{
-			return vector<3, T>(this->x % vec.x, this->y % vec.x, this->z % vec.x);
-		}
-
-		template<typename T>
-		constexpr vector<3, T> operator%(vector<3, T> const& vec)
-		{
-			return vector<3, T>(this->x % vec.x, this->y % vec.y, this->z % vec.z);
-		}
-
-		template<typename U>
-		constexpr vector<3, T> operator%(U scalar)
-		{
-			return vector<3, T>(this->x % scalar, this->y % scalar, this->z % scalar);
-		}
-
 #pragma endregion
-
 		//Increment and Decrement Operators-------------------------------------------------------------
 #pragma region INCREMENT_AND_DECREMENT_OPERATORS
 		constexpr vector<3, T>& operator++()
@@ -320,4 +229,204 @@ HEADER_MATH_NAMESPACE
 		}
 #pragma endregion
 	};
+		//Unary Arithmetic Operators
+#pragma region UNARY_ARITHMETIC_OPERATORS
+	template<typename T>
+	constexpr vector<3, T> operator+(vector<3, T> const& v)
+	{
+		return v;
+	}
+
+	template<typename T>
+	constexpr vector<3, T> operator-(vector<3, T> const& v)
+	{
+		return vector<3, T>(
+			-v.x,
+			-v.y,
+			-v.z);
+	}
+#pragma endregion
+		//Unary Arithmetic Operators
+#pragma region BINARY_ARITHMETIC_OPERATORS
+	template<typename T>
+	constexpr vector<3, T> operator+(vector<3, T> const& v, T scalar)
+	{
+		return vector<3, T>(
+			v.x + scalar,
+			v.y + scalar,
+			v.z + scalar);
+	}
+
+	template<typename T>
+	constexpr vector<3, T> operator+(vector<3, T> const& v, vector<1, T> const& scalar)
+	{
+		return vector<3, T>(
+			v.x + scalar.x,
+			v.y + scalar.x,
+			v.z + scalar.x);
+	}
+
+	template<typename T>
+	constexpr vector<3, T> operator+(T scalar, vector<3, T> const& v)
+	{
+		return vector<3, T>(
+			scalar + v.x,
+			scalar + v.y,
+			scalar + v.z);
+	}
+
+	template<typename T>
+	constexpr vector<3, T> operator+(vector<1, T> const& scalar, vector<3, T> const& v)
+	{
+		return vector<3, T>(
+			scalar.x + v.x,
+			scalar.x + v.y,
+			scalar.x + v.z);
+	}
+
+	template<typename T>
+	constexpr vector<3, T> operator+(vector<3, T> const& v1, vector<3, T> const& v2)
+	{
+		return vector<3, T>(
+			v1.x + v2.x,
+			v1.y + v2.y,
+			v1.z + v2.z);
+	}
+
+	template<typename T>
+	constexpr vector<3, T> operator-(vector<3, T> const& v, T scalar)
+	{
+		return vector<3, T>(
+			v.x - scalar,
+			v.y - scalar,
+			v.z - scalar);
+	}
+
+	template<typename T>
+	constexpr vector<3, T> operator-(vector<3, T> const& v, vector<1, T> const& scalar)
+	{
+		return vector<3, T>(
+			v.x - scalar.x,
+			v.y - scalar.x,
+			v.z - scalar.x);
+	}
+
+	template<typename T>
+	constexpr vector<3, T> operator-(T scalar, vector<3, T> const& v)
+	{
+		return vector<3, T>(
+			scalar - v.x,
+			scalar - v.y,
+			scalar - v.z);
+	}
+
+	template<typename T>
+	constexpr vector<3, T> operator-(vector<1, T> const& scalar, vector<3, T> const& v)
+	{
+		return vector<3, T>(
+			scalar.x - v.x,
+			scalar.x - v.y,
+			scalar.x - v.z);
+	}
+
+	template<typename T>
+	constexpr vector<3, T> operator-(vector<3, T> const& v1, vector<3, T> const& v2)
+	{
+		return vector<3, T>(
+			v1.x - v2.x,
+			v1.y - v2.y,
+			v1.z - v2.z);
+	}
+
+	template<typename T>
+	constexpr vector<3, T> operator*(vector<3, T> const& v, T scalar)
+	{
+		return vector<3, T>(
+			v.x * scalar,
+			v.y * scalar,
+			v.z * scalar);
+	}
+
+	template<typename T>
+	constexpr vector<3, T> operator*(vector<3, T> const& v, vector<1, T> const& scalar)
+	{
+		return vector<3, T>(
+			v.x * scalar.x,
+			v.y * scalar.x,
+			v.z * scalar.x);
+	}
+
+	template<typename T>
+	constexpr vector<3, T> operator*(T scalar, vector<3, T> const& v)
+	{
+		return vector<3, T>(
+			scalar * v.x,
+			scalar * v.y,
+			scalar * v.z);
+	}
+
+	template<typename T>
+	constexpr vector<3, T> operator*(vector<1, T> const& scalar, vector<3, T> const& v)
+	{
+		return vector<3, T>(
+			scalar.x * v.x,
+			scalar.x * v.y,
+			scalar.x * v.z);
+	}
+
+	template<typename T>
+	constexpr vector<3, T> operator*(vector<3, T> const& v1, vector<3, T> const& v2)
+	{
+		return vector<3, T>(
+			v1.x * v2.x,
+			v1.y * v2.y,
+			v1.z * v2.z);
+	}
+
+	template<typename T>
+	constexpr vector<3, T> operator/(vector<3, T> const& v, T scalar)
+	{
+		return vector<3, T>(
+			v.x / scalar,
+			v.y / scalar,
+			v.z / scalar);
+	}
+
+	template<typename T>
+	constexpr vector<3, T> operator/(vector<3, T> const& v, vector<1, T> const& scalar)
+	{
+		return vector<3, T>(
+			v.x / scalar.x,
+			v.y / scalar.x,
+			v.z / scalar.x);
+	}
+
+	template<typename T>
+	constexpr vector<3, T> operator/(T scalar, vector<3, T> const& v)
+	{
+		return vector<3, T>(
+			scalar / v.x,
+			scalar / v.y,
+			scalar / v.z);
+	}
+
+	template<typename T>
+	constexpr vector<3, T> operator/(vector<1, T> const& scalar, vector<3, T> const& v)
+	{
+		return vector<3, T>(
+			scalar.x / v.x,
+			scalar.x / v.y,
+			scalar.x / v.z);
+	}
+
+	template<typename T>
+	constexpr vector<3, T> operator/(vector<3, T> const& v1, vector<3, T> const& v2)
+	{
+		return vector<3, T>(
+			v1.x / v2.x,
+			v1.y / v2.y,
+			v1.z / v2.z);
+	}
+#pragma endregion
+
 }

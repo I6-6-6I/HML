@@ -179,96 +179,6 @@ HEADER_MATH_NAMESPACE
 			return *this;
 		}
 
-		template<typename T>
-		constexpr vector<2, T> operator+(vector<1, T> const& vec)
-		{
-			return vector<2, T>(this->x + vec.x, this->y + vec.x);
-		}
-
-		template<typename T>
-		constexpr vector<2, T> operator+(vector<2, T> const& vec)
-		{
-			return vector<2, T>(this->x + vec.x, this->y + vec.y);
-		}
-
-		template<typename U>
-		constexpr vector<2, T> operator+(U scalar)
-		{
-			return vector<2, T>(this->x + scalar, this->y + scalar);
-		}
-
-		template<typename T>
-		constexpr vector<2, T> operator-(vector<1, T> const& vec)
-		{
-			return vector<2, T>(this->x - vec.x, this->y - vec.x);
-		}
-
-		template<typename T>
-		constexpr vector<2, T> operator-(vector<2, T> const& vec)
-		{
-			return vector<2, T>(this->x - vec.x, this->y - vec.y);
-		}
-
-		template<typename U>
-		constexpr vector<2, T> operator-(U scalar)
-		{
-			return vector<2, T>(this->x - scalar, this->y - scalar);
-		}
-
-		template<typename T>
-		constexpr vector<2, T> operator*(vector<1, T> const& vec)
-		{
-			return vector<2, T>(this->x * vec.x, this->y * vec.x);
-		}
-
-		template<typename T>
-		constexpr vector<2, T> operator*(vector<2, T> const& vec)
-		{
-			return vector<2, T>(this->x * vec.x, this->y * vec.y);
-		}
-
-		template<typename U>
-		constexpr vector<2, T> operator*(U scalar)
-		{
-			return vector<2, T>(this->x * scalar, this->y * scalar);
-		}
-
-		template<typename T>
-		constexpr vector<2, T> operator/(vector<1, T> const& vec)
-		{
-			return vector<2, T>(this->x / vec.x, this->y / vec.x);
-		}
-
-		template<typename T>
-		constexpr vector<2, T> operator/(vector<2, T> const& vec)
-		{
-			return vector<2, T>(this->x / vec.x, this->y / vec.y);
-		}
-
-		template<typename U>
-		constexpr vector<2, T> operator/(U scalar)
-		{
-			return vector<2, T>(this->x / scalar, this->y / scalar);
-		}
-
-		template<typename T>
-		constexpr vector<2, T> operator%(vector<1, T> const& vec)
-		{
-			return vector<2, T>(this->x % vec.x, this->y % vec.x);
-		}
-
-		template<typename T>
-		constexpr vector<2, T> operator%(vector<2, T> const& vec)
-		{
-			return vector<2, T>(this->x % vec.x, this->y % vec.y);
-		}
-
-		template<typename U>
-		constexpr vector<2, T> operator%(U scalar)
-		{
-			return vector<2, T>(this->x % scalar, this->y % scalar);
-		}
-
 #pragma endregion
 
 		//Increment and Decrement Operators-------------------------------------------------------------
@@ -299,4 +209,183 @@ HEADER_MATH_NAMESPACE
 		}
 #pragma endregion
 	};
+		//Unary Arithmetic Operators--------------------------------------------------------------------
+#pragma region UNARY_ARITHMETIC_OPERATORS
+	template<typename T>
+	constexpr vector<2, T> operator+(vector<2, T> const& v)
+	{
+		return v;
+	}
+
+	template<typename T>
+	constexpr vector<2, T> operator-(vector<2, T> const& v)
+	{
+		return vector<2, T>(
+			-v.x,
+			-v.y);
+	}
+#pragma endregion
+		
+		//Binary Arithmetic Operators-------------------------------------------------------------------
+#pragma region BINARY_ARITHMETIC_OPERATORS
+	template<typename T>
+	constexpr vector<2,T> operator+(vector<2,T> const& v, T scalar)
+	{
+		return vector<2,T>(
+			v.x + scalar,
+			v.y + scalar);
+	}
+
+	template<typename T>
+	constexpr vector<2,T> operator+(vector<2,T> const& v1, vector<1, T> const& v2)
+	{
+		return vector<2,T>(
+			v1.x + v2.x,
+			v1.y + v2.x);
+	}
+
+	template<typename T>
+	constexpr vector<2,T> operator+(T scalar, vector<2,T> const& v)
+	{
+		return vector<2,T>(
+			scalar + v.x,
+			scalar + v.y);
+	}
+
+	template<typename T>
+	constexpr vector<2,T> operator+(vector<1, T> const& v1, vector<2,T> const& v2)
+	{
+		return vector<2,T>(
+			v1.x + v2.x,
+			v1.x + v2.y);
+	}
+
+	template<typename T>
+	constexpr vector<2,T> operator+(vector<2,T> const& v1, vector<2,T> const& v2)
+	{
+		return vector<2,T>(
+			v1.x + v2.x,
+			v1.y + v2.y);
+	}
+
+	template<typename T>
+	constexpr vector<2,T> operator-(vector<2,T> const& v, T scalar)
+	{
+		return vector<2,T>(
+			v.x - scalar,
+			v.y - scalar);
+	}
+
+	template<typename T>
+	constexpr vector<2,T> operator-(vector<2,T> const& v1, vector<1, T> const& v2)
+	{
+		return vector<2,T>(
+			v1.x - v2.x,
+			v1.y - v2.x);
+	}
+
+	template<typename T>
+	constexpr vector<2,T> operator-(T scalar, vector<2,T> const& v)
+	{
+		return vector<2,T>(
+			scalar - v.x,
+			scalar - v.y);
+	}
+
+	template<typename T>
+	constexpr vector<2,T> operator-(vector<1, T> const& v1, vector<2,T> const& v2)
+	{
+		return vector<2,T>(
+			v1.x - v2.x,
+			v1.x - v2.y);
+	}
+
+	template<typename T>
+	constexpr vector<2,T> operator-(vector<2,T> const& v1, vector<2,T> const& v2)
+	{
+		return vector<2,T>(
+			v1.x - v2.x,
+			v1.y - v2.y);
+	}
+
+	template<typename T>
+	constexpr vector<2,T> operator*(vector<2,T> const& v, T scalar)
+	{
+		return vector<2,T>(
+			v.x * scalar,
+			v.y * scalar);
+	}
+
+	template<typename T>
+	constexpr vector<2,T> operator*(vector<2,T> const& v1, vector<1, T> const& v2)
+	{
+		return vector<2,T>(
+			v1.x * v2.x,
+			v1.y * v2.x);
+	}
+
+	template<typename T>
+	constexpr vector<2,T> operator*(T scalar, vector<2,T> const& v)
+	{
+		return vector<2,T>(
+			scalar * v.x,
+			scalar * v.y);
+	}
+
+	template<typename T>
+	constexpr vector<2,T> operator*(vector<1, T> const& v1, vector<2,T> const& v2)
+	{
+		return vector<2,T>(
+			v1.x * v2.x,
+			v1.x * v2.y);
+	}
+
+	template<typename T>
+	constexpr vector<2,T> operator*(vector<2,T> const& v1, vector<2,T> const& v2)
+	{
+		return vector<2,T>(
+			v1.x * v2.x,
+			v1.y * v2.y);
+	}
+
+	template<typename T>
+	constexpr vector<2,T> operator/(vector<2,T> const& v, T scalar)
+	{
+		return vector<2,T>(
+			v.x / scalar,
+			v.y / scalar);
+	}
+
+	template<typename T>
+	constexpr vector<2,T> operator/(vector<2,T> const& v1, vector<1, T> const& v2)
+	{
+		return vector<2,T>(
+			v1.x / v2.x,
+			v1.y / v2.x);
+	}
+
+	template<typename T>
+	constexpr vector<2,T> operator/(T scalar, vector<2,T> const& v)
+	{
+		return vector<2,T>(
+			scalar / v.x,
+			scalar / v.y);
+	}
+
+	template<typename T>
+	constexpr vector<2,T> operator/(vector<1, T> const& v1, vector<2,T> const& v2)
+	{
+		return vector<2,T>(
+			v1.x / v2.x,
+			v1.x / v2.y);
+	}
+
+	template<typename T>
+	constexpr vector<2,T> operator/(vector<2,T> const& v1, vector<2,T> const& v2)
+	{
+		return vector<2,T>(
+			v1.x / v2.x,
+			v1.y / v2.y);
+	}
+#pragma endregion
 }
