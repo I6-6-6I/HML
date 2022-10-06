@@ -26,13 +26,20 @@ It's that simple.
 #include "include/HeaderMath.hpp"
 int main()
 {
-    HML::Vector2 x(5,7);
-    HML::Vector2 y(4,5);
-    HML::iVector2 z(7, 8);
+    HML::Vector2<> x(5,7);
+    HML::Vector2<> y(4,5);
+    HML::Vector2<int> z(7, 8);
+    HML::Mat2x3<> mat3(5, 6, 7, 8, 9, 0);
+    HML::Mat2x2<> mat(mat3);
+    HML::Mat2x2<int> mat2(y, z);
     z = x + y;
     z++;
+
     std::cout << "Hello World!\n";
-    std::cout << z.x << std::endl << z.y;
+    std::cout << mat[0].x << std::endl << mat[0].y << std::endl << mat[1].x << std::endl << mat[1].y << std::endl;
+    mat--;
+    std::cout << "++\n";
+    std::cout << mat[0].x << std::endl << mat[0].y << std::endl << mat[1].x << std::endl << mat[1].y << std::endl;
 }
 ```
 
