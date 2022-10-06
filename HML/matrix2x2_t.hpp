@@ -30,7 +30,7 @@ HEADER_MATH_NAMESPACE
 #pragma region CONSTRUCTORS
 	constexpr matrix() { values[0] = vector<2, T>(); values[1] = vector<2, T>(); }
 	constexpr matrix(matrix<2, 2, T> const& mat) { *this = mat; }
-	explicit constexpr matrix(T scalar) { values[0] = vector<2, T>(scalar, scalar); values[0] = vector<2, T>(scalar, scalar); }
+	explicit constexpr matrix(T scalar) { values[0] = vector<2, T>(scalar, scalar); values[1] = vector<2, T>(scalar, scalar); }
 	constexpr matrix(T const& x1, T const& y1, T const& x2, T const& y2) { this->values[0].x = x1; this->values[0].y = y1; this->values[1].x = x2; this->values[1].y = y2; }
 	constexpr matrix(vector<2, T> const& v1, vector<2, T> const& v2) { this->values[0] = v1; this->values[1] = v2; }
 #pragma endregion
@@ -175,26 +175,26 @@ HEADER_MATH_NAMESPACE
 #pragma region INCREMENT_AND_DECREMENT_OPERATORS
 		matrix<2, 2, T>& operator++ ()
 		{
-			 ++this->values[0];
-			 ++this->values[1];
+			 this->values[0]++;
+			 this->values[1]++;
 			 return *this;
 		}
 		matrix<2, 2, T>& operator--()
 		{
-			 --this->values[0];
-			 --this->values[1];
+			 this->values[0]--;
+			 this->values[1]--;
 			 return *this;
 		}
 		matrix<2, 2, T> operator++(int)
 		{
 			 matrix<2, 2, T> ret(*this);
-			 ++* this;
+			 ++*this;
 			 return ret;
 		}
 		matrix<2, 2, T> operator--(int)
 		{
 			 matrix<2, 2, T> ret(*this);
-			 --* this;
+			 --*this;
 			 return ret;
 		}
 #pragma endregion
