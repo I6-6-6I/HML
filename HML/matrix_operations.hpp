@@ -11,17 +11,17 @@ HEADER_MATH_NAMESPACE
 		{
 			static matrix<2, 2, T> inv(matrix<2, 2, T> const& m)
 			{
-				T OneOverDeterminant = static_cast<T>(1) / (
+				T OneDivideDeterminant = static_cast<T>(1) / (
 					+m[0][0] * m[1][1]
 					- m[1][0] * m[0][1]);
 	
-				matrix<2, 2, T> Inverse(
-					+m[1][1] * OneOverDeterminant,
-					-m[0][1] * OneOverDeterminant,
-					-m[1][0] * OneOverDeterminant,
-					+m[0][0] * OneOverDeterminant);
+				matrix<2, 2, T> Inversion(
+					+m[1][1] * OneDivideDeterminant,
+					-m[0][1] * OneDivideDeterminant,
+					-m[1][0] * OneDivideDeterminant,
+					+m[0][0] * OneDivideDeterminant);
 	
-				return Inverse;
+				return Inversion;
 			}
 		};
 	}
