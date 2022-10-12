@@ -49,16 +49,16 @@ HEADER_MATH_NAMESPACE
 
 		//Conversions-----------------------------------------------------------------------------------
 	#pragma region CONVERSIONS
-		template<typename U, typename V, typename M, typename N>
-		constexpr matrix(U const& x1, V const& y1, M const& x2, N const& y2, M const& x3, N const& y3)
+		template<typename U, typename V, typename M, typename N, typename P, typename D>
+		constexpr matrix(U const& x1, V const& y1, M const& x2, N const& y2, P const& x3, D const& y3)
 		{
 			this->values[0].x = x1; this->valuesp[0].y = y1;
 			this->values[1].x = x2; this->valuesp[1].y = y2;
 			this->values[2].x = x3; this->valuesp[2].y = y3;
 		}
 
-		template<typename U, typename V>
-		constexpr matrix(vector<C, U> const& v1, vector<C, V> const& v2, vector<C, V> const& v3) { this->values[0] = v1; this->values[1] = v2; this->values[2] = v3; }
+		template<typename U, typename V, typename Z>
+		constexpr matrix(vector<C, U> const& v1, vector<C, V> const& v2, vector<C, Z> const& v3) { this->values[0] = v1; this->values[1] = v2; this->values[2] = v3; }
 
 		template<typename U>
 		explicit constexpr matrix(matrix<R, C, U> const& mat)
