@@ -1,7 +1,7 @@
 #pragma once
 HEADER_MATH_NAMESPACE
 {
-	HEADER_DETAIL_NAMESPACE
+	HEADER_PRECISE_NAMESPACE
 	{
 		template<size_t C, size_t R, typename T>
 		struct _inverse {};
@@ -28,6 +28,6 @@ HEADER_MATH_NAMESPACE
 	template<size_t C, size_t R, typename T>
 	matrix<C, R, T> inverse(matrix<C, R, T> const& m)
 	{
-		return DETAIL_HML::_inverse<C,R,T>::inv(m);
+		return PRECISE::_inverse<C,R,T>::inv(m);
 	}
 }
