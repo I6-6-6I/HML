@@ -13,5 +13,7 @@
 #include "matrix2x3_t.hpp"
 #include "matrix2x4_t.hpp"
 #include "matrix3x2_t.hpp"
+#include "matrix3x3_t.hpp"
+#include "matrix3x4_t.hpp"
 #include "matrix_operations.hpp"
 #pragma endregion
