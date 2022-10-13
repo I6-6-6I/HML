@@ -1,3 +1,4 @@
 #pragma once
 #define HEADER_MATH_NAMESPACE namespace HML
-#define HEADER_PRECISE_NAMESPACE namespace PRECISE
+#define HEADER_COMP_NAMESPACE namespace COMP
+#define HEADER_TRIGONOMETRY_NAMESPACE namespace TRIGONOMETRY

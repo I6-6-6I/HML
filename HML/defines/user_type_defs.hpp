@@ -21,6 +21,6 @@ HEADER_MATH_NAMESPACE
 	template <typename T = float> using Mat4x2		= matrix<4, 2, T>;
 	template <typename T = float> using Mat4x3		= matrix<4, 3, T>;
 	template <typename T = float> using Mat4x4		= matrix<4, 4, T>;
-	template <typename T = float> using Quaternion	= quat<T>;
+	template <typename T = float> using Quat		= quat<T>;
 #pragma endregion								  
 }

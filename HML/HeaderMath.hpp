@@ -20,3 +20,6 @@
 #include "matrix4x4_t.hpp"
 #include "matrix_operations.hpp"
 #pragma endregion
+
+#include "common.hpp"
+#include "trigonometry_common.hpp"
