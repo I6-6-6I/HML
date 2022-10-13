@@ -138,17 +138,4 @@ HEADER_MATH_NAMESPACE
 		COMP::func1(x, Log10);
 	}
 #pragma endregion
-#pragma region DOT
-	template<typename T>
-	constexpr T Dot(T x, T y)
-	{
-		static_assert(std::numeric_limits<T>::is_iec559, "only floating-point inputs are acceptable here!");
-		return x * y;
-	}
-	template<size_t L, typename T>
-	constexpr vector<L, T> Dot(vector<L, T> x, vector<L, T> y)
-	{
-		return COMP::func2(x, y, Dot);
-	}
-#pragma endregion
 }
