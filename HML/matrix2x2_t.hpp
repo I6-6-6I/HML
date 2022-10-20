@@ -327,13 +327,13 @@ HEADER_MATH_NAMESPACE
 	template<typename T>
 	vector<C,T> operator/(matrix<R, C, T> const& m, vector<C, T> const& v)
 	{
-		return inverse(m) * v;
+		return HML::Inverse(m) * v;
 	}
 
 	template<typename T>
 	vector<C,T> operator/(vector<C, T> const& v, matrix<R, C, T> const& m)
 	{
-		return v *  inverse(m);
+		return v *  HML::Inverse(m);
 	}
 
 	template<typename T>

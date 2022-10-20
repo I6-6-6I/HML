@@ -21,6 +21,8 @@
 #include "matrix_operations.hpp"
 #pragma endregion
 
+#include "quaternion_t.hpp"
+
 #include "common.hpp"
 #include "geometric_common.hpp"
 #include "trigonometry_common.hpp"

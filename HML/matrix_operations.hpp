@@ -26,7 +26,7 @@ HEADER_MATH_NAMESPACE
 		};
 	}
 	template<size_t C, size_t R, typename T>
-	matrix<C, R, T> inverse(matrix<C, R, T> const& m)
+	matrix<C, R, T> Inverse(matrix<C, R, T> const& m)
 	{
 		return COMP::_inverse<C,R,T>::inv(m);
 	}
