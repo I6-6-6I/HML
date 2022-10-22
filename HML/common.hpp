@@ -226,4 +226,25 @@ HEADER_MATH_NAMESPACE
 		return COMP::func1(x, InvSqrt);
 	}
 #pragma endregion
+#pragma region EPSILON
+	template<typename T>
+	constexpr T Epsilon()
+	{
+		static_assert(std::numeric_limits<T>::is_iec559, "only floating-point inputs are acceptable here !");
+		return std::numeric_limits<T>::epsilon();
+	}
+	template<typename T>
+	bool EpsilonEqual(T const& x, T const& y, T const& epsilon)
+	{
+		static_assert(std::numeric_limits<T>::is_iec559, "only floating-point inputs are acceptable here !");
+		return HML::Abs(x - y) < epsilon;
+	}
+
+	template<typename T>
+	bool EpsilonNotEqual(T const& x, T const& y, T const& epsilon)
+	{
+		static_assert(std::numeric_limits<T>::is_iec559, "only floating-point inputs are acceptable here !");
+		return HML::Abs(x - y) >= epsilon;
+	}
+#pragma endregion
 }

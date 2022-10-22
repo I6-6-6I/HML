@@ -185,4 +185,16 @@ HEADER_MATH_NAMESPACE
 			return COMP::func1(x, AtanH);
 		}
 #pragma endregion
+#pragma region LENGTH
+		template<typename T>
+		T Length(T x)
+		{
+			return HML::Abs(x);
+		}
+		template<size_t L, typename T>
+		vector<L, T> Length(vector<L, T> x)
+		{
+			return COMP::func1(x, Length);
+		}
+#pragma endregion
 }

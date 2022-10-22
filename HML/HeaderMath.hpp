@@ -26,3 +26,6 @@
 #include "common.hpp"
 #include "geometric_common.hpp"
 #include "trigonometry_common.hpp"
+
+#include "matrix_transformations.hpp"
+#include "clip_space.hpp"
