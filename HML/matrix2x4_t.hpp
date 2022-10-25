@@ -35,7 +35,11 @@ HEADER_MATH_NAMESPACE
 	#pragma region CONSTRUCTORS
 		constexpr matrix() { this->values[0] = vector<C, T>(); this->values[1] = vector<C, T>(); }
 		constexpr matrix(matrix<R, C, T> const& mat) { *this = mat; }
-		explicit constexpr matrix(T scalar) { this->values[0] = vector<C, T>(scalar, scalar, scalar, scalar); this->values[1] = vector<C, T>(scalar, scalar, scalar, scalar); }
+		explicit constexpr matrix(T scalar) 
+		{ 
+			this->values[0] = vector<C, T>(scalar, static_cast<T>(0), static_cast<T>(0), static_cast<T>(0));
+			this->values[1] = vector<C, T>(static_cast<T>(0), scalar, static_cast<T>(0), static_cast<T>(0));
+		}
 		constexpr matrix(T const& x1, T const& y1, T const& z1, T const& w1, T const& x2, T const& y2, T const& z2, T const& w2)
 		{
 			this->values[0].x = x1; this->values[0].y = y1; this->values[0].z = z1; this->values[0].w = w1;
