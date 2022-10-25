@@ -12,6 +12,54 @@ HEADER_MATH_NAMESPACE
 	}
 	HEADER_TRANSFORM_NAMESPACE
 	{
+	template<typename T>
+	matrix<4, 4, T> Translate(matrix<4, 4, T> const& m, vector<3, T> const& v)
+	{
+		matrix<4, 4, T> ret(m);
+		ret[3] = m[0] * v[0] + m[1] * v[1] + m[2] * v[2] + m[3];
+		return ret;
+	}
+
+	template<typename T>
+	matrix<4, 4, T> Rotate(matrix<4, 4, T> const& m, T angle, vector<3, T> const& v)
+	{
+		T const a = angle;
+		T const c = cos(a);
+		T const s = sin(a);
+
+		vector<3, T> xyz(HML::Normalize(v));
+		vector<3, T> temp((T(1) - c) * xyz);
+
+		matrix<4, 4, T> rot;
+		rot[0][0] = c + temp[0] * xyz[0];
+		rot[0][1] = temp[0] * xyz[1] + s * xyz[2];
+		rot[0][2] = temp[0] * xyz[2] - s * xyz[1];
+
+		rot[1][0] = temp[1] * xyz[0] - s * xyz[2];
+		rot[1][1] = c + temp[1] * xyz[1];
+		rot[1][2] = temp[1] * xyz[2] + s * xyz[0];
+
+		rot[2][0] = temp[2] * xyz[0] + s * xyz[1];
+		rot[2][1] = temp[2] * xyz[1] - s * xyz[0];
+		rot[2][2] = c + temp[2] * xyz[2];
+
+		matrix<4, 4, T> ret;
+		ret[0] = m[0] * rot[0][0] + m[1] * rot[0][1] + m[2] * rot[0][2];
+		ret[1] = m[0] * rot[1][0] + m[1] * rot[1][1] + m[2] * rot[1][2];
+		ret[2] = m[0] * rot[2][0] + m[1] * rot[2][1] + m[2] * rot[2][2];
+		ret[3] = m[3];
+		return ret;
+	}
+	template<typename T>
+	matrix<4, 4, T> Scale(matrix<4, 4, T> const& m, vector<3, T> const& v)
+	{
+		matrix<4, 4, T> ret;
+		ret[0] = m[0] * v[0];
+		ret[1] = m[1] * v[1];
+		ret[2] = m[2] * v[2];
+		ret[3] = m[3];
+		return ret;
+	}
 	template<typename T = float>
 	static constexpr bool DecomposeTransform(const HML::matrix<4, 4, T>&transform, HML::vector<3, T>&outTranslation, HML::vector<3, T>&outRotation, HML::vector<3, T>&outScale)
 			{
@@ -63,7 +111,7 @@ HEADER_MATH_NAMESPACE
 			HML::vector<3, T> const u(HML::Normalize(HML::Cross(w, up)));
 			HML::vector<3, T> const v(HML::Cross(u, w));
 
-			HML::matrix<4, 4, T> ret(static_cast<T>(0));
+			HML::matrix<4, 4, T> ret(static_cast<T>(1));
 			ret[0][0] = u.x;
 			ret[1][0] = u.y;
 			ret[2][0] = u.z;
@@ -85,7 +133,7 @@ HEADER_MATH_NAMESPACE
 			HML::vector<3, T> const u(HML::Normalize(HML::Cross(up, w)));
 			HML::vector<3, T> const v(HML::Cross(w, u));
 
-			HML::matrix<4, 4, T> ret(static_cast<T>(0));
+			HML::matrix<4, 4, T> ret(static_cast<T>(1));
 			ret[0][0] = u.x;
 			ret[1][0] = u.y;
 			ret[2][0] = u.z;
