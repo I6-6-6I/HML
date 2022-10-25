@@ -8,10 +8,10 @@ HEADER_MATH_NAMESPACE
 	template<typename T = float>
 	static constexpr HML::matrix<4, 4, T> Ortho_RH_ZO(T left, T right, T top, T bottom, T zNear, T zFar)
 		{
-			HML::matrix<4, 4, T> ret(static_cast<T>(0));
+			HML::matrix<4, 4, T> ret(static_cast<T>(1));
 			ret[0][0] = static_cast<T>(2) / (right - left);
 			ret[1][1] = static_cast<T>(2) / (bottom - top);
-			ret[2][2] = static_cast<T>(1) / (zNear - zFar);
+			ret[2][2] = -static_cast<T>(1) / (zNear - zFar);
 			ret[3][0] = -(right + left) / (right - left);
 			ret[3][1] = -(bottom + top) / (bottom - top);
 			ret[3][2] = -zNear / (zFar - zNear);
@@ -20,7 +20,7 @@ HEADER_MATH_NAMESPACE
 	template<typename T = float>
 	static constexpr HML::matrix<4, 4, T> Ortho_RH_NO(T left, T right, T top, T bottom, T zNear, T zFar)
 		{
-			HML::matrix<4, 4, T> ret(static_cast<T>(0));
+			HML::matrix<4, 4, T> ret(static_cast<T>(1));
 			ret[0][0] = static_cast<T>(2) / (right - left);
 			ret[1][1] = static_cast<T>(2) / (bottom - top);
 			ret[2][2] = -static_cast<T>(2) / (zNear - zFar);
@@ -32,7 +32,7 @@ HEADER_MATH_NAMESPACE
 	template<typename T = float>
 	static constexpr HML::matrix<4, 4, T> Ortho_LH_ZO(T left, T right, T top, T bottom, T zNear, T zFar)
 		{
-			HML::matrix<4,4,T> ret(static_cast<T>(0));
+			HML::matrix<4,4,T> ret(static_cast<T>(1));
 			ret[0][0] = static_cast<T>(2) / (right - left);
 			ret[1][1] = static_cast<T>(2) / (bottom - top);
 			ret[2][2] = static_cast<T>(1) / (zNear - zFar);
@@ -44,7 +44,7 @@ HEADER_MATH_NAMESPACE
 	template<typename T = float>
 	static constexpr HML::matrix<4, 4, T> Ortho_LH_NO(T left, T right, T top, T bottom, T zNear, T zFar)
 		{
-			HML::matrix<4, 4, T> ret(static_cast<T>(0));
+			HML::matrix<4, 4, T> ret(static_cast<T>(1));
 			ret[0][0] = static_cast<T>(2) / (right - left);
 			ret[1][1] = static_cast<T>(2) / (bottom - top);
 			ret[2][2] = static_cast<T>(2) / (zNear - zFar);
