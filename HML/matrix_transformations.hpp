@@ -51,6 +51,16 @@ HEADER_MATH_NAMESPACE
 		return ret;
 	}
 	template<typename T>
+	vector<3, T> Rotate(quat<T> const& q, vector<3, T> const& v)
+	{
+		return q * v;
+	}
+	template<typename T>
+	vector<4, T> Rotate(quat<T> const& q, vector<4, T> const& v)
+	{
+		return q * v;
+	}
+	template<typename T>
 	matrix<4, 4, T> Scale(matrix<4, 4, T> const& m, vector<3, T> const& v)
 	{
 		matrix<4, 4, T> ret;
