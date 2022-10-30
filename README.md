@@ -3,7 +3,7 @@
 ## :blue_book: Introduction
 
 HML is a **Header** Only **Math Library** highly inspired by both glm and cmath.
-It was made in order to make creating Vulkan and DirectX12 apps easier by giving ready to use mathematic functions and structs. 
+It was made in order to make creating Vulkan and DirectX12 applications easier to do by giving ready to use mathematic functions and structs. 
 
 ## :spiral_notepad: Features
  - Common functions such as: Min, Max, Abs, Round, Ceil, Pow etc. 
