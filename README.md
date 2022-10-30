@@ -12,21 +12,6 @@ It was made in order to make creating Vulkan and DirectX12 apps easier by giving
  - Matrix Transformations such as: Translate, Rotate, Scale, View.
  - Clip Space(Right Handed, Left Handed, 0 to 1 and -1 to 1)
 
-## :package: Getting Started
-This library is made only with header files so there is not much to do u just have to:
-### If you are using GIT
-- - - -
-1. Clone this repository and save it on your device.
-2. Copy and paste HML folder with headers into your project
-3. Include HeaderMath.hpp and you are done
-### If you are not using GIT
-- - - -
-1. Download all files from this repository and save it on your device.
-2. Copy and paste HML folder with headers into your project
-3. Include HeaderMath.hpp and you are done
-
-It's that simple.
-
 ## :gear: Usage
 
 In HML both structs and functions allways starts by upper case letter for example:
