@@ -1,4 +1,7 @@
-# HML
+![](https://github.com/I6-6-6I/HML/blob/main/HML.png)
+
+## :blue_book: Introduction
+
 HML is a **Header** Only **Math Library** highly inspired by both glm and cmath.
 It was made in order to make creating Vulkan and DirectX12 apps easier by giving ready to use mathematic functions and structs. 
 
