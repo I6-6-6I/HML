@@ -71,7 +71,7 @@ HEADER_MATH_NAMESPACE
 		return ret;
 	}
 	template<typename T = float>
-	static constexpr bool DecomposeTransform(const HML::matrix<4, 4, T>&transform, HML::vector<3, T>&outTranslation, HML::vector<3, T>&outRotation, HML::vector<3, T>&outScale)
+	static constexpr bool DecomposeTransform(const HML::matrix<4, 4, T>&transform, HML::vector<3, T>&outTranslation, HML::vector<3, T>&outRotation, HML::vector<3, T>&outScale)		//Might need fix test it later
 			{
 				HML::matrix<4, 4, T> LocalMatrix(transform);
 	
@@ -87,12 +87,11 @@ HEADER_MATH_NAMESPACE
 				outTranslation = HML::vector<3, T>(LocalMatrix[3]);
 				LocalMatrix[3] = HML::vector<4, T>(0, 0, 0, LocalMatrix[3].w);
 	
-				HML::vector<3, T> Row[3]/*, Pdum3*/;			//IDK FIX if it is needed
+				HML::vector<3, T> Row[3];
 				for (size_t i = 0; i < 3; ++i)
 					for (size_t j = 0; j < 3; ++j)
 						Row[i][j] = LocalMatrix[i][j];
-	
-				// Compute X scale factor and normalize first row.
+
 				outScale.x = HML::Length(Row[0]);
 				Row[0] = HML::COMP::scale(Row[0], static_cast<T>(1));
 				outScale.y = HML::Length(Row[1]);
