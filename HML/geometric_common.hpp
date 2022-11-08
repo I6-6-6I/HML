@@ -34,6 +34,37 @@ HEADER_MATH_NAMESPACE
 		return ret.x + ret.y + ret.z + ret.w;
 	}
 #pragma endregion
+#pragma region REFLECT
+	template<typename T>
+	T Reflect(T const& I, T const& N)
+	{
+		return I - N * HML::Dot(N, I) * static_cast<T>(2);
+	}
+	template<size_t L, typename T>
+	vector<L, T> Reflect(vector<L, T> const& I, vector<L, T> const& N)
+	{
+		return COMP::func2(I, N, Reflect);
+	}
+#pragma endregion
+#pragma region REFRACT
+	template<typename T>
+	T Refract(T const& I, T const& N, T eta)
+	{
+		T const dotV(HML::Dot(N, I));
+		T const k(static_cast<T>(1) - eta * eta * (static_cast<T>(1) - dotV * dotV));
+		return (eta * I - (eta * dotV + HML::Sqrt(k)) * N) * static_cast<T>(k >= static_cast<T>(0));
+	}
+
+	template<size_t L, typename T>
+	vector<L, T> Refract(vector<L, T> const& I, vector<L, T> const& N, T eta)
+	{
+			T const dotV(HML::Dot(N, I));
+			T const k(static_cast<T>(1) - eta * eta * (static_cast<T>(1) - dotV * dotV));
+			vector<L, T> const ret =
+				(k >= static_cast<T>(0)) ? (eta * I - (eta * dotV + HML::Sqrt(k)) * N) : vector<L, T>(0);
+			return ret;
+	}
+#pragma endregion
 #pragma region NORMALIZE
 	template <typename T>
 	T Normalize(T const& x)

@@ -51,16 +51,6 @@ HEADER_MATH_NAMESPACE
 		return ret;
 	}
 	template<typename T>
-	vector<3, T> Rotate(quat<T> const& q, vector<3, T> const& v)
-	{
-		return q * v;
-	}
-	template<typename T>
-	vector<4, T> Rotate(quat<T> const& q, vector<4, T> const& v)
-	{
-		return q * v;
-	}
-	template<typename T>
 	matrix<4, 4, T> Scale(matrix<4, 4, T> const& m, vector<3, T> const& v)
 	{
 		matrix<4, 4, T> ret;
@@ -91,7 +81,7 @@ HEADER_MATH_NAMESPACE
 				for (size_t i = 0; i < 3; ++i)
 					for (size_t j = 0; j < 3; ++j)
 						Row[i][j] = LocalMatrix[i][j];
-
+	
 				outScale.x = HML::Length(Row[0]);
 				Row[0] = HML::COMP::scale(Row[0], static_cast<T>(1));
 				outScale.y = HML::Length(Row[1]);
